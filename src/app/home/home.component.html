@@ -1,0 +1,285 @@
+<div class="relative">
+  <header class="absolute inset-x-0 top-0 z-10 w-full">
+    <div class="px-4 mx-auto sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-20">
+        <div class="flex-shrink-0">
+          <a href="#" title="" class="flex">
+            <img class="w-auto h-8" src="assets/logo-white.png" alt="" />
+          </a>
+        </div>
+
+        <button
+          type="button"
+          class="inline-flex p-2 text-black transition-all duration-200 rounded-md lg:hidden focus:bg-gray-100 hover:bg-gray-100"
+        >
+          <!-- Menu open: "hidden", Menu closed: "block" -->
+          <svg
+            class="block w-6 h-6"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            />
+          </svg>
+
+          <!-- Menu open: "block", Menu closed: "hidden" -->
+          <svg
+            class="hidden w-6 h-6"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+
+        <div
+          class="hidden ml-auto lg:flex lg:items-center lg:justify-center lg:space-x-10"
+        >
+          <a
+            href="#"
+            title=""
+            class="text-base font-semibold text-black transition-all duration-200 hover:text-opacity-80"
+          >
+            Location
+          </a>
+
+          <a
+            href="#"
+            title=""
+            class="text-base font-semibold text-black transition-all duration-200 hover:text-opacity-80"
+          >
+            Vente
+          </a>
+
+          <a
+            href="#"
+            title=""
+            class="text-base font-semibold text-black transition-all duration-200 hover:text-opacity-80"
+          >
+            À Propos
+          </a>
+
+          <a
+            href="#"
+            title=""
+            class="inline-flex items-center justify-center px-5 py-2.5 text-base font-semibold transition-all duration-200 rounded-full bg-green-500 text-white hover:bg-green-600 focus:bg-green-600"
+            role="button"
+          >
+            Login
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="bg-green-50 overflow-hidden">
+    <div class="flex flex-col lg:flex-row lg:items-stretch lg:min-h-[800px]">
+      <div
+        class="relative flex items-center justify-center w-full lg:order-2 lg:w-7/12"
+      >
+        <div class="absolute bottom-0 right-0 hidden lg:block">
+          <img
+            class="object-contain w-auto h-48"
+            src="https://i.imgur.com/TxKocLR.png"
+            alt=""
+          />
+        </div>
+
+        <div
+          class="relative px-4 pt-24 pb-16 text-center sm:px-6 md:px-24 2xl:px-32 lg:py-24 lg:text-left"
+        >
+          <h1 class="text-4xl font-bold text-black sm:text-6xl xl:text-8xl">
+            Vivez vos rêves <br />
+            Trouvez votre lieu.
+          </h1>
+          <p class="mt-8 text-xl text-black">
+            Votre plateforme de confiance pour trouver votre propriété idéale en
+            Tunisie
+          </p>
+
+          <form
+            action="#"
+            method="POST"
+            class="max-w-xl mx-auto mt-8 bg-white lg:mx-0 sm:bg-transparent lg:mt-12 rounded-xl"
+          >
+            <div
+              class="p-4 sm:p-2 sm:bg-white sm:border-2 sm:border-transparent sm:rounded-full sm:focus-within:border-green-500 sm:focus-within:ring-1 sm:focus-within:ring-green-500"
+            >
+              <div class="flex flex-col items-start sm:flex-row">
+                <div class="flex-1 w-full min-w-0">
+                  <div
+                    class="relative text-gray-400 focus-within:text-gray-600"
+                  >
+                    <label for="email" class="sr-only"></label>
+                    <input
+                      type="email"
+                      name="email"
+                      id="email"
+                      placeholder="Rechercher..."
+                      class="block w-full px-4 py-4 text-base text-center text-black placeholder-gray-500 transition-all duration-200 border-transparent rounded-full sm:text-left focus:border-transparent focus:ring-0 caret-green-500"
+                      required=""
+                    />
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  class="inline-flex items-center justify-center w-full px-4 py-4 mt-4 font-semibold text-white transition-all duration-200 bg-green-500 border border-transparent rounded-full sm:w-auto sm:ml-4 sm:mt-0 hover:bg-green-600 focus:bg-green-600"
+                >
+                  Rechercher
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div
+        class="relative w-full overflow-hidden lg:order-1 h-96 lg:h-auto lg:w-5/12"
+      >
+        <div class="absolute inset-0">
+          <img
+            class="object-cover w-full h-full scale-150"
+            src="https://www.gazettebourgogne.fr/thumbs/1368×1026/articles/2023/11/AdobeStock-601397286.jpeg"
+            alt=""
+          />
+        </div>
+
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"
+        ></div>
+
+        <!-- <div class="absolute bottom-0 left-0">
+          <div class="p-4 sm:p-6 lg:p-8">
+            <div class="flex items-center">
+              <svg
+                class="w-10 h-10 text-green-500"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <h2 class="font-bold text-white text-7xl ml-2.5">395</h2>
+            </div>
+            <p class="max-w-xs mt-1.5 text-xl text-white">
+              Professionals have organized their desk via PostCra
+            </p>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="py-10 bg-white sm:py-16 lg:py-24">
+  <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2
+        class="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl"
+      >
+        Dernières Annonces
+      </h2>
+      <p class="max-w-xl mx-auto mt-4 text-base leading-relaxed text-gray-600">
+        Découvrez les toutes dernières opportunités immobilières en Tunisie !
+        Que vous recherchiez une maison familiale, un appartement moderne ou un
+        terrain pour votre projet futur, nos annonces les plus récentes vous
+        offrent un aperçu exclusif des propriétés disponibles sur le marché.
+      </p>
+    </div>
+
+    <div
+      class="grid max-w-md grid-cols-1 mx-auto mt-12 lg:max-w-full lg:mt-16 lg:grid-cols-3 gap-x-10 gap-y-12"
+    >
+      <div
+        *ngFor="let annonce of annonces"
+        class="border border-3 shadow-sm border-gray-300 px-4 py-3 rounded-xl"
+      >
+        <a
+          [routerLink]="['annonce', annonce.id]"
+          title=""
+          class="block aspect-w-4 aspect-h-3"
+        >
+          <img
+            class="object-cover w-full h-24 rounded"
+            [src]="
+              'http://localhost:8084/api/annonces/download/' + annonce.photos[0]
+            "
+            alt=""
+            style="object-fit: contain"
+          />
+        </a>
+        <span
+          class="inline-flex px-4 py-1 text-xs font-semibold tracking-widest uppercase rounded-full text-rose-500 bg-rose-100 mt-6"
+        >
+          {{ annonce.type }}
+        </span>
+        <p class="mt-2 text-xl font-semibold">
+          <a href="#" title="" class="text-black"> {{ annonce.titre }} </a>
+        </p>
+
+        <p class="mt-2 text-gray-600">{{ annonce.prix }} DT</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="">
+  <div
+    class="flex flex-col items-center justify-center px-16 sm:space-y-0 sm:flex-row sm:px-0"
+  >
+    <a
+      routerLink="/list"
+      routerLinkActive="active"
+      class="inline-flex items-center justify-center w-full px-10 py-4 text-base font-semibold text-white transition-all duration-200 bg-green-600 border border-transparent rounded-md sm:w-auto hover:bg-green-700 focus:bg-green-700"
+      role="button"
+    >
+      Voir toutes les annonces
+    </a>
+  </div>
+</section>
+
+<section class="py-10 bg-white sm:py-16 lg:py-24">
+  <div class="max-w-4xl px-4 mx-auto sm:px-6 lg:px-8">
+    <div class="md:flex md:items-center md:justify-center md:space-x-14">
+      <div class="relative flex-shrink-0 w-48 h-48">
+        <div
+          class="absolute w-48 h-48 bg-gray-300 rounded-full -bottom-2 -right-1"
+        ></div>
+        <img
+          class="relative object-cover w-48 h-48 rounded-full"
+          src="https://avatars.githubusercontent.com/u/75751008?v=4"
+          alt=""
+        />
+      </div>
+
+      <div class="mt-10 md:mt-0">
+        <blockquote>
+          <p class="text-xl text-black">
+            "Ce site est vraiment incroyable. J'ai trouvé ma maison de rêve en
+            quelques jours seulement et je n'aurais pas pu être plus heureux."
+          </p>
+        </blockquote>
+        <p class="text-lg font-semibold text-black mt-7">Amna KOUKI</p>
+        <p class="mt-1 text-base text-gray-600">⭐⭐⭐⭐⭐</p>
+      </div>
+    </div>
+  </div>
+</section>

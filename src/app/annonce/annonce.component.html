@@ -1,0 +1,84 @@
+<app-navbar></app-navbar>
+
+<section class="text-gray-600 body-font overflow-hidden">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="lg:w-4/5 mx-auto flex flex-wrap">
+      <div class="lg:w-1/2 w-full h-64 object object-center rounded">
+        <angular-carousel [infinite]="true" [auto]="true">
+          <ng-container *ngFor="let photo of annonce?.photos; let i = index">
+            <div *angularCarouselSlide>
+              <img
+                [src]="'http://localhost:8084/api/annonces/download/' + photo"
+                alt="image"
+                class="w-full h-full object-cover object-center rounded carousel-image"
+                (click)="open(i)"
+              />
+            </div>
+          </ng-container>
+        </angular-carousel>
+      </div>
+
+      <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+        <h2 class="text-sm title-font text-gray-500 tracking-widest">
+          {{ annonce?.type }}
+        </h2>
+        <h1 class="text-gray-900 text-3xl title-font font-medium mb-6">
+          {{ annonce?.titre }}
+        </h1>
+
+        <p class="leading-relaxed">
+          {{ annonce?.description }}
+        </p>
+
+        <p class="leading-relaxed">
+          <strong> Region: </strong> {{ annonce?.region }}
+        </p>
+
+        <p class="leading-relaxed">
+          <strong> Adresse: </strong> {{ annonce?.adresse }}
+        </p>
+
+        <div class="flex mt-3 items-center pb-5 border-gray-100">
+          <div class="flex">
+            <span class="mr-3 font-medium">Surface:</span>
+            {{ annonce?.surface }} m²
+          </div>
+          <div class="flex ml-6 items-center">
+            <span class="mr-3 font-medium">Nombre de piece:</span>
+
+            <div class="relative">
+              {{ annonce?.nbPieces }}
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center pb-5 border-b-2 border-gray-100 mb-5">
+          <span
+            class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded"
+            *ngFor="let tag of annonce?.caracteristiques"
+            >{{ tag }}</span
+          >
+        </div>
+        <div class="flex">
+          <span class="title-font font-medium text-2xl text-gray-900">
+            {{ annonce?.prix }} DT
+          </span>
+          <a
+            [swal]="{
+              title: 'Contact',
+              html:
+                '<strong>Téléphone: </strong>' +
+                annonce?.contact.telephone +
+                '<br>' +
+                '<strong>Email: </strong>' +
+                annonce?.contact.email,
+
+              icon: 'info'
+            }"
+            class="flex ml-auto text-white text-sm bg-green-500 border-0 py-2 px-3 focus:outline-none hover:bg-green-600 rounded cursor-pointer"
+            >Afficher le contact
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
