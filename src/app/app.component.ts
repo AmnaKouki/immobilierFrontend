@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'immobilier';
+  // get current route
+  isLoginPage = false;
+  ngOnInit() {
+    if (window.location.pathname === '/login') {
+      this.isLoginPage = true;
+    } else {
+      this.isLoginPage = false;
+    }
+  }
 }

@@ -49,7 +49,8 @@
           class="hidden ml-auto lg:flex lg:items-center lg:justify-center lg:space-x-10"
         >
           <a
-            href="#"
+            [routerLink]="['/list']"
+            [queryParams]="{ type: 'location' }"
             title=""
             class="text-base font-semibold text-black transition-all duration-200 hover:text-opacity-80"
           >
@@ -57,7 +58,8 @@
           </a>
 
           <a
-            href="#"
+            [routerLink]="['/list']"
+            [queryParams]="{ type: 'vente' }"
             title=""
             class="text-base font-semibold text-black transition-all duration-200 hover:text-opacity-80"
           >
@@ -65,7 +67,7 @@
           </a>
 
           <a
-            href="#"
+            routerLink="/about"
             title=""
             class="text-base font-semibold text-black transition-all duration-200 hover:text-opacity-80"
           >
@@ -73,7 +75,7 @@
           </a>
 
           <a
-            href="#"
+            routerLink="/login"
             title=""
             class="inline-flex items-center justify-center px-5 py-2.5 text-base font-semibold transition-all duration-200 rounded-full bg-green-500 text-white hover:bg-green-600 focus:bg-green-600"
             role="button"
@@ -101,7 +103,7 @@
         <div
           class="relative px-4 pt-24 pb-16 text-center sm:px-6 md:px-24 2xl:px-32 lg:py-24 lg:text-left"
         >
-          <h1 class="text-4xl font-bold text-black sm:text-6xl xl:text-8xl">
+          <h1 class="text-4xl font-bold text-black sm:text-6xl xl:text-7xl">
             Vivez vos rêves <br />
             Trouvez votre lieu.
           </h1>
@@ -125,18 +127,21 @@
                   >
                     <label for="email" class="sr-only"></label>
                     <input
-                      type="email"
-                      name="email"
-                      id="email"
+                      type="text"
+                      name="search"
+                      id="search"
                       placeholder="Rechercher..."
                       class="block w-full px-4 py-4 text-base text-center text-black placeholder-gray-500 transition-all duration-200 border-transparent rounded-full sm:text-left focus:border-transparent focus:ring-0 caret-green-500"
                       required=""
+                      (keyup.enter)="submitSearch($event)"
+                      [(ngModel)]="searchQuery"
                     />
                   </div>
                 </div>
 
                 <button
-                  type="submit"
+                (click)="clickSearch()"
+                  style="border-radius: 2rem"
                   class="inline-flex items-center justify-center w-full px-4 py-4 mt-4 font-semibold text-white transition-all duration-200 bg-green-500 border border-transparent rounded-full sm:w-auto sm:ml-4 sm:mt-0 hover:bg-green-600 focus:bg-green-600"
                 >
                   Rechercher
@@ -189,7 +194,7 @@
   </section>
 </div>
 
-<section class="py-10 bg-white sm:py-16 lg:py-24">
+<section class="bg-white sm:pt-16 lg:pt-24">
   <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
     <div class="max-w-2xl mx-auto text-center">
       <h2
@@ -205,39 +210,68 @@
       </p>
     </div>
 
-    <div
-      class="grid max-w-md grid-cols-1 mx-auto mt-12 lg:max-w-full lg:mt-16 lg:grid-cols-3 gap-x-10 gap-y-12"
-    >
-      <div
-        *ngFor="let annonce of annonces"
-        class="border border-3 shadow-sm border-gray-300 px-4 py-3 rounded-xl"
-      >
-        <a
-          [routerLink]="['annonce', annonce.id]"
-          title=""
-          class="block aspect-w-4 aspect-h-3"
-        >
-          <img
-            class="object-cover w-full h-24 rounded"
-            [src]="
-              'http://localhost:8084/api/annonces/download/' + annonce.photos[0]
-            "
-            alt=""
-            style="object-fit: contain"
-          />
-        </a>
-        <span
-          class="inline-flex px-4 py-1 text-xs font-semibold tracking-widest uppercase rounded-full text-rose-500 bg-rose-100 mt-6"
-        >
-          {{ annonce.type }}
-        </span>
-        <p class="mt-2 text-xl font-semibold">
-          <a href="#" title="" class="text-black"> {{ annonce.titre }} </a>
-        </p>
-
-        <p class="mt-2 text-gray-600">{{ annonce.prix }} DT</p>
+    <section class="text-gray-600 body-font">
+      <div class="container px-5 py-24 mx-auto">
+        <div class="flex flex-wrap -m-4">
+          <a
+            [routerLink]="['/annonce', annonce.id]"
+            *ngFor="let annonce of annonces"
+            class="p-4 md:w-1/3 cursor-pointer"
+          >
+            <div
+              class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden"
+            >
+              <img
+                class="lg:h-48 md:h-36 w-full object-cover object-center"
+                [src]="
+                  'http://localhost:8084/api/annonces/download/' +
+                  annonce.photos[0]
+                "
+                alt="blog"
+              />
+              <div class="p-6">
+                <h2
+                  class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1"
+                >
+                  {{ annonce.type }}
+                </h2>
+                <h1 class="title-font text-lg font-medium text-gray-900 mb-3">
+                  {{ annonce.titre }}
+                </h1>
+                <p
+                  class="leading-relaxed mb-3"
+                  [innerHTML]="annonce.description"
+                ></p>
+                <div class="flex items-center flex-wrap">
+                  <a
+                    class="text-green-500 font-medium inline-flex items-center md:mb-2 lg:mb-0"
+                  >
+                    Plus d'infos
+                    <svg
+                      class="w-4 h-4 ml-2"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5l7 7-7 7"></path>
+                    </svg>
+                  </a>
+                  <span
+                    class="text-gray-400 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm py-1"
+                  >
+                    {{ annonce.prix }} DT
+                  </span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
       </div>
-    </div>
+    </section>
   </div>
 </section>
 

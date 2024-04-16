@@ -17,7 +17,7 @@ export class AnnonceComponent {
   constructor(private _lightbox: Lightbox) {}
 
   open(index: number): void {
-    this._lightbox.open(this._album, index);
+    this._lightbox.open(this._album, 0);
   }
 
   close(): void {
@@ -35,8 +35,25 @@ export class AnnonceComponent {
           thumb: 'http://localhost:8084/api/annonces/download/' + photo,
         });
       });
+      this.images =  this._album
     });
+
+    this.responsiveOptions = [
+      {
+        breakpoint: '1024px',
+        numVisible: 5,
+      },
+      {
+        breakpoint: '768px',
+        numVisible: 3,
+      },
+      {
+        breakpoint: '560px',
+        numVisible: 1,
+      },
+    ];
   }
 
-  showContact() {}
+  images: any[] | undefined;
+  responsiveOptions: any[] | undefined;
 }

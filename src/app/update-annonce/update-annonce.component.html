@@ -1,0 +1,250 @@
+<app-navbar></app-navbar>
+
+<div class="relative py-3 sm:max-w-4xl sm:mx-auto">
+  <div class="relative px-4 py-10 bg-white mx-8 md:mx-0 rounded-3xl sm:p-10">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex items-center space-x-5">
+        <div
+          class="h-14 w-14 bg-green-200 rounded-full flex flex-shrink-0 justify-center items-center text-green-500 text-2xl font-mono"
+        >
+          🖋️
+        </div>
+        <div class="block pl-2 font-semibold text-xl self-start text-gray-700">
+          <h2 class="leading-relaxed">Modifier annonce</h2>
+          <p class="text-sm text-gray-500 font-normal leading-relaxed">
+            Veuillez modifier les champs ci-dessous
+          </p>
+        </div>
+      </div>
+      <form [formGroup]="form" class="divide-y divide-gray-200">
+        <div
+          class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7"
+        >
+          <div class="flex flex-col">
+            <label class="leading-loose">📁 Type d'annonce:</label>
+
+            <p-dropdown
+              styleClass="w-full leading-3"
+              [options]="types"
+              formControlName="selectedType"
+              optionLabel="name"
+              [showClear]="true"
+              placeholder="Sélectionner le type d'annonce"
+            ></p-dropdown>
+          </div>
+          <div class="flex flex-col">
+            <label class="leading-loose">✨ Titre de l'annonce:</label>
+
+            <input
+              type="text"
+              class="p-inputtext-sm mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm"
+              pInputText
+              formControlName="titre"
+              placeholder="Titre de l'annonce"
+            />
+          </div>
+          <div class="flex flex-col">
+            <label class="leading-loose">🔖 Catégorie:</label>
+
+            <p-dropdown
+              styleClass="w-full leading-3"
+              [options]="categories"
+              formControlName="selectedCategory"
+              optionLabel="name"
+              [showClear]="true"
+              placeholder="Sélectionner une catégorie"
+            ></p-dropdown>
+          </div>
+
+          <div class="flex flex-col">
+            <label class="leading-loose">💬 Description:</label>
+            <p-editor
+              formControlName="description"
+              [style]="{ height: '320px' }"
+            ></p-editor>
+          </div>
+
+          <div class="flex flex-col">
+            <label class="leading-loose">📏 Surface:</label>
+            <p-inputNumber
+              styleClass="w-full leading-3"
+              inputId="surface"
+              suffix=" m²"
+              inputId="integeronly"
+              formControlName="surface"
+            >
+            </p-inputNumber>
+          </div>
+
+          <div class="flex flex-col">
+            <label class="leading-loose">💰 Prix:</label>
+            <p-inputNumber
+              styleClass="w-full leading-3"
+              inputId="prix"
+              suffix=" DT"
+              inputId="integeronly"
+              formControlName="prix"
+            >
+            </p-inputNumber>
+          </div>
+
+          <div class="flex flex-col">
+            <label class="leading-loose">🔢 Nombre de pièces:</label>
+            <p-inputNumber
+              styleClass="w-full leading-3"
+              inputId="pieces"
+              suffix=" pièce(s)"
+              inputId="integeronly"
+              formControlName="nbPieces"
+            >
+            </p-inputNumber>
+          </div>
+
+          <div class="flex flex-col">
+            <label class="leading-loose">🏷️ Caractéristiques:</label>
+            <p-multiSelect
+              styleClass="w-full leading-3"
+              [options]="caracteristiques"
+              formControlName="selectedCaracteristiques"
+              placeholder="Sélectionner les caractéristiques"
+              optionLabel="name"
+            ></p-multiSelect>
+          </div>
+
+          <div class="flex flex-col">
+            <label class="leading-loose">📌 Région:</label>
+
+            <p-dropdown
+              styleClass="w-full leading-3"
+              [options]="regions"
+              formControlName="selectedRegion"
+              optionLabel="name"
+              [showClear]="true"
+              placeholder="Sélectionner une région"
+            ></p-dropdown>
+          </div>
+
+          <div class="flex flex-col">
+            <label class="leading-loose">🗺️ Adresse:</label>
+            <input
+              type="text"
+              class="p-inputtext-sm mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm"
+              pInputText
+              formControlName="adresse"
+              placeholder="Adresse"
+            />
+          </div>
+
+          <div class="flex flex-col">
+            <label class="leading-loose">📨 Adresse Email:</label>
+            <input
+              type="text"
+              class="p-inputtext-sm mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm"
+              pInputText
+              formControlName="email"
+              placeholder="Adresse Email"
+            />
+          </div>
+
+          <div class="flex flex-col">
+            <label class="leading-loose">📞 Téléphone:</label>
+            <input
+              type="text"
+              class="p-inputtext-sm mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-gray-900 focus:border-gray-900 sm:text-sm"
+              pInputText
+              formControlName="tel"
+              placeholder="Téléphone"
+            />
+          </div>
+
+          <div class="flex flex-col">
+            <p-table
+              [value]="currentPhotos"
+              [tableStyle]="{ 'min-width': '50rem' }"
+            >
+              <ng-template pTemplate="header">
+                <tr>
+                  <th>📷 Photos:</th>
+                  <th>Action</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-photo>
+                <tr>
+                  <td>
+                    <img
+                      [src]="
+                        'http://localhost:8084/api/annonces/download/' + photo
+                      "
+                      alt="photo"
+                      class="w-40 object-cover rounded"
+                    />
+                  </td>
+                  <td>
+                    <button
+                      (click)="deletePhoto(photo)"
+                      style="border-radius: 0.3rem"
+                      type="button"
+                      class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                    >
+                      🗑️ Supprimer
+                    </button>
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+
+          <div class="flex flex-col">
+            <label class="leading-loose">📷 Ajouter des Photos :</label>
+            <p-fileUpload
+              #uploader
+              name="demo[]"
+              url="https://www.primefaces.org/cdn/api/upload.php"
+              [multiple]="true"
+              accept="image/*"
+              [auto]="true"
+              chooseLabel="Choisir"
+              uploadLabel="Upload"
+              cancelLabel="Annuler"
+              [showUploadButton]="false"
+              [showCancelButton]="false"
+              [customUpload]="true"
+              (uploadHandler)="uploadfun($event)"
+            >
+            </p-fileUpload>
+          </div>
+        </div>
+        <div class="pt-4 flex items-center space-x-4">
+          <button
+            style="border-radius: 0.375rem"
+            class="border text-sm flex justify-center items-center w-full text-gray-900 px-4 py-3 rounded-md focus:outline-none"
+            (click)="resetForm()"
+          >
+            <svg
+              class="w-6 h-6 mr-3"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+            Réinitialiser
+          </button>
+          <button
+            (click)="onSubmit({ addAnother: false })"
+            style="border-radius: 0.375rem"
+            class="text-sm bg-green-600 flex justify-center items-center w-full text-white px-4 py-3 focus:outline-none"
+          >
+           ✏️ Modifier
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

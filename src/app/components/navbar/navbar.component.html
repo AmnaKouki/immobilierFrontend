@@ -3,7 +3,7 @@
     <!-- lg+ -->
     <nav class="flex items-center justify-between lg:h-20">
       <div class="flex-shrink-0">
-        <a href="#" title="" class="flex">
+        <a routerLink="/" title="" class="flex">
           <img class="w-auto h-8 lg:h-10" src="assets/logo.png" alt="" />
         </a>
       </div>
@@ -47,90 +47,63 @@
 
       <div class="hidden lg:flex lg:items-center lg:ml-auto lg:space-x-10">
         <a
-          href="#"
+          [routerLink]="['/list']"
+          [queryParams]="{ type: 'location' }"
           title=""
           class="text-base font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-600"
         >
-          Location
+          🏠 Location
         </a>
 
         <a
-          href="#"
+          [routerLink]="['/list']"
+          [queryParams]="{ type: 'vente' }"
           title=""
           class="text-base font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-600"
         >
-          Vente
+          💵 Vente
         </a>
 
         <a
-          href="#"
+          routerLink="/about"
           title=""
           class="text-base font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-600"
         >
-          À Propos
+          📌 À Propos
         </a>
       </div>
 
       <a
-        href="#"
+        *ngIf="showLoginBtn"
+        routerLink="/login"
         title=""
-        class="items-center justify-center hidden px-4 py-3 ml-10 text-base font-semibold text-white transition-all duration-200 bg-green-600 border border-transparent rounded-md lg:inline-flex hover:bg-green-700 focus:bg-green-700"
+        class="ml-10 inline-flex items-center justify-center px-5 py-2.5 text-base font-semibold transition-all duration-200 rounded-full bg-green-500 text-white hover:bg-green-600 focus:bg-green-600"
         role="button"
       >
-        Login
+        🔐 Se connecter
+      </a>
+
+      <a
+        *ngIf="!showLoginBtn"
+        routerLink="/admin"
+        title=""
+        class="ml-10 inline-flex items-center justify-center px-5 py-2.5 text-base font-semibold transition-all duration-200 rounded-full bg-green-500 text-white hover:bg-green-600 focus:bg-green-600"
+        role="button"
+      >
+        ⚙️ Admin Panel
+      </a>
+
+      <a
+        *ngIf="!showLoginBtn"
+        (click)="logout()"
+        title=""
+        class="cursor-pointer ml-10 text-base font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-600"
+      >
+      🔓 Déconnexion
       </a>
     </nav>
 
     <!-- xs to lg -->
-    <nav
-      class="pt-4 pb-6 bg-white border border-gray-200 rounded-md shadow-md lg:hidden"
-    >
-      <div class="flow-root">
-        <div class="flex flex-col px-6 -my-2 space-y-1">
-          <a
-            href="#"
-            title=""
-            class="inline-flex py-2 text-base font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-600"
-          >
-            Features
-          </a>
 
-          <a
-            href="#"
-            title=""
-            class="inline-flex py-2 text-base font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-600"
-          >
-            Solutions
-          </a>
-
-          <a
-            href="#"
-            title=""
-            class="inline-flex py-2 text-base font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-600"
-          >
-            Resources
-          </a>
-
-          <a
-            href="#"
-            title=""
-            class="inline-flex py-2 text-base font-medium text-black transition-all duration-200 hover:text-green-600 focus:text-green-600"
-          >
-            Pricing
-          </a>
-        </div>
-      </div>
-
-      <div class="px-6 mt-6">
-        <a
-          href="#"
-          title=""
-          class="inline-flex justify-center px-4 py-3 text-base font-semibold text-white transition-all duration-200 bg-green-600 border border-transparent rounded-md tems-center hover:bg-green-700 focus:bg-green-700"
-          role="button"
-        >
-          Get started now
-        </a>
-      </div>
-    </nav>
   </div>
 </header>

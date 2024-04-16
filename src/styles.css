@@ -1,8 +1,65 @@
-/* You can add global styles to this file, and also import other style files */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base" layer(tailwindcss);
 
+@import "tailwindcss/components" layer(tailwindcss);
+
+@import "tailwindcss/utilities" layer(tailwindcss);
+
+/* Angular Carousel Styles */
 @import "../node_modules/@marcreichel/angular-carousel/css/main.css";
 @import "../node_modules/@marcreichel/angular-carousel/themes/dots.css";
-@import "../node_modules/ngx-lightbox/lightbox.css"
+
+@import "../node_modules/ngx-lightbox/lightbox.css";
+/* Ag Grid Styles */
+@import "ag-grid-community/styles/ag-grid.css";
+@import "ag-grid-community/styles/ag-theme-quartz.css";
+
+@import "../node_modules/primeng/resources/themes/tailwind-light/theme.css";
+@import "../node_modules/primeng/resources/primeng.min.css";
+
+@import "../node_modules/quill/dist/quill.core.css";
+@import "../node_modules/quill/dist/quill.snow.css";
+
+@import "../node_modules/@ngneat/hot-toast/src/styles/styles.css";
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+  /* .p-dropdown,
+ {
+  width: 100%;
+} */ .p-inputnumber-input {
+  padding: 0.5rem;
+}
+
+.p-fileupload .p-fileupload-buttonbar .p-button {
+  background: #4caf50;
+  border: 1px solid #4caf50;
+  padding: 0.25rem 1rem;
+  font-size: 0.875rem;
+}
+
+.p-fileupload .p-fileupload-row .p-button {
+  background: #4caf50;
+  border: 1px solid #4caf50;
+  padding: 0.25rem 1rem;
+  font-size: 0.875rem;
+}
+
+.p-fileupload .p-fileupload-content {
+  padding: 0rem;
+}
+
+.ag-body-horizontal-scroll-viewport,
+.ag-body-vertical-scroll-viewport,
+.ag-horizontal-right-spacer {
+  scrollbar-width: thin;
+}
+
+.swal2-confirm {
+  background-color: #4caf50 !important;
+  border: 1px solid #4caf50 !important;
+}
+
+* {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}

@@ -4,7 +4,31 @@
   <div class="container px-5 py-24 mx-auto">
     <div class="lg:w-4/5 mx-auto flex flex-wrap">
       <div class="lg:w-1/2 w-full h-64 object object-center rounded">
-        <angular-carousel [infinite]="true" [auto]="true">
+        <div class="card">
+          <p-galleria
+            [value]="images"
+            [showItemNavigators]="true"
+            [responsiveOptions]="responsiveOptions"
+            [circular]="true"
+            [numVisible]="5"
+            [containerStyle]="{ 'max-width': '640px' }"
+          >
+            <ng-template pTemplate="item" let-item>
+              <img
+                (click)="open(item.src)"
+                [src]="item.src"
+                class="w-full h-[350px] block"
+              />
+            </ng-template>
+            <ng-template pTemplate="thumbnail" let-item>
+              <div class="grid grid-nogutter justify-content-center">
+                <img [src]="item.src" class="w-24 h-16 object-cover block" />
+              </div>
+            </ng-template>
+          </p-galleria>
+        </div>
+
+        <!-- <angular-carousel [infinite]="true" [auto]="true">
           <ng-container *ngFor="let photo of annonce?.photos; let i = index">
             <div *angularCarouselSlide>
               <img
@@ -15,23 +39,21 @@
               />
             </div>
           </ng-container>
-        </angular-carousel>
+        </angular-carousel> -->
       </div>
 
       <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
         <h2 class="text-sm title-font text-gray-500 tracking-widest">
-          {{ annonce?.type }}
+          {{ annonce?.type | titlecase }}
         </h2>
         <h1 class="text-gray-900 text-3xl title-font font-medium mb-6">
           {{ annonce?.titre }}
         </h1>
 
-        <p class="leading-relaxed">
-          {{ annonce?.description }}
-        </p>
+        <p class="leading-relaxed" [innerHTML]="annonce?.description"></p>
 
         <p class="leading-relaxed">
-          <strong> Region: </strong> {{ annonce?.region }}
+          <strong> Région: </strong> {{ annonce?.region }}
         </p>
 
         <p class="leading-relaxed">
